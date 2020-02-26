@@ -1,0 +1,102 @@
+form: FLATFILE
+structures:
+id: 'FidelityContributions'
+name: 'FidelityContributions'
+data:
+ - groupId: 'FidelityContributions'
+   usage: 'O'
+   
+   items:
+   - {idRef: 'Employee', count: '>1', usage: O }
+   - {idRef: 'Employer', count: '>1' , usage: O } 
+   - {idRef: 'Loans' , count: '>1', usage: O }
+segments:
+- id: 'Employee'
+  name: 'Employee Contributions'
+  values:
+  - { idRef: 'PlanNumber', usage: M}
+  - { idRef: 'BatchGroupId', usage: M}
+  - { idRef: 'Filler_3', usage: M}
+  - { idRef: 'SSN', usage: M}
+  - { idRef: 'Filler_1', usage: M}
+  - { idRef: 'Reserved_5', usage: M}
+  - { idRef: 'RecordIdentifier', usage: M}
+  - { idRef: 'Filler_4', usage: M}
+  - { idRef: 'TransactionCode', usage: M}
+  - { idRef: 'Filler_2', usage: M}
+  - { idRef: 'SourceCode', usage: M}
+  - { idRef: 'ItemNumber', usage: M}
+  - { idRef: 'Filler_1', usage: M}
+  - { name: 'Amount', usage: M, type: String, length: 13 }
+  - { idRef: 'Filler_4', usage: M}
+  - { name: 'FiscalYear', usage: M, type: String, length: 4 }
+  - { idRef: 'AdjustmentReason', usage: M}
+  - { idRef: 'OriginalPayDate', usage: M}
+  - { idRef: 'Reserved_5', usage: M}
+- id: 'Employer'
+  name: 'Employer Contributions'
+  values:
+  - { idRef: 'PlanNumber', usage: M}
+  - { idRef: 'BatchGroupId', usage: M}
+  - { idRef: 'Filler_3', usage: M}
+  - { idRef: 'SSN', usage: M}
+  - { idRef: 'Filler_1', usage: M}
+  - { idRef: 'Filler_5', usage: M}
+  - { idRef: 'RecordIdentifier', usage: M}
+  - { idRef: 'Filler_4', usage: M}
+  - { idRef: 'TransactionCode', usage: M}
+  - { idRef: 'Filler_3', usage: M}
+  - { idRef: 'SourceCode', usage: M}
+  - { idRef: 'ItemNumber', usage: M}
+  - { idRef: 'Filler_1', usage: M}
+  - { name: 'ContributionAmount', usage: M, type: String, length: 11 }
+  - { idRef: 'AdjustmentReason', usage: M}
+  - { idRef: 'Filler_8', usage: M}
+  - { name: 'Salary', usage: M, type: String, length: 7 }
+  - { idRef: 'Filler_3', usage: M}
+- id: 'Loans'
+  name: 'Loan Contributions'
+  values:
+  - { idRef: 'PlanNumber', usage: M}
+  - { idRef: 'BatchGroupId', usage: M}
+  - { idRef: 'Filler_3', usage: M}
+  - { idRef: 'SSN', usage: M}
+  - { idRef: 'Filler_1', usage: M}
+  - { idRef: 'Reserved_5', usage: M}
+  - { idRef: 'RecordIdentifier', usage: M}
+  - { idRef: 'Filler_4', usage: M}
+  - { name: 'LoanIdentification', usage: M, type: String, length: 12 }
+  - { idRef: 'Filler_1', usage: M}
+  - { idRef: 'TransactionCode', usage: M}
+  - { idRef: 'ItemNumber', usage: M}
+  - { idRef: 'Reserved_2', usage: M}
+  - { idRef: 'Filler_1', usage: M}
+  - { name: 'PrincipalAmount', usage: M, type: String, length: 7 }
+  - { idRef: 'AdjustmentReason', usage: M}
+  - { idRef: 'OriginalPayDate', usage: M}
+  - { name: 'PrincipalOnlyFlag', usage: M, type: String, length: 1 }
+  - { name: 'NewRepaymentFrequency', usage: M, type: String, length: 1 }
+  - { idRef: 'Filler_3', usage: M}
+  - { idRef: 'Filler_3', usage: M}
+elements: 
+ - { id: 'PlanNumber', name: 'PlanNumber', type: String, length: 5 }
+ - { id: 'BatchGroupId', name: 'BatchGroupId', type: String, length: 4 }
+ - { id: 'Filler_3', name: 'Filler', type: String, length: 3 }
+ - { id: 'SSN', name: 'SSN', type: String, length: 11 }
+ - { id: 'Filler_1', name: 'Filler', type: String, length: 1 }
+ - { id: 'Reserved_5', name: 'Reserved', type: String, length: 5 }
+ - { id: 'RecordIdentifier', name: 'RecordIdentifier', type: String, length: 2 }
+ - { id: 'Filler_4', name: 'Filler', type: String, length: 4 }
+ - { id: 'TransactionCode', name: 'TransactionCode', type: String, length: 3 }
+ - { id: 'Filler_2', name: 'Filler', type: String, length: 2 }
+ - { id: 'SourceCode', name: 'SourceCode', type: String, length: 2 }
+ - { id: 'ItemNumber', name: 'ItemNumber', type: String, length: 2 }
+ - { id: 'Filler_5', name: 'Filler', type: String, length: 5 }
+ - { id: 'Filler_4', name: 'Filler', type: String, length: 5 }
+ - { id: 'Reserved_2', name: 'Reserved', type: String, length: 2 }
+ - { id: 'Filler_3', name: 'Filler', type: String, length: 3 }
+ - { id: 'Filler_8', name: 'Filler', type: String, length: 8 }
+ - { id: 'OriginalPayDate', name: 'OriginalPayDate', type: String, length: 8 }
+ - { id: 'AdjustmentReason', name: 'AdjustmentReason', type: String, length: 1 }
+
+ 
