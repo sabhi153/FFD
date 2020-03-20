@@ -1,1 +1,35 @@
+%dw 2.0
+output application/java
+import * from modules::common
+import * from dw::core::Arrays
 
+
+var batchSize = Mule::p("batch.block-size")
+
+var lookupsmy = (smy) -> lookupRef(smy,vars.source_code_summarized_lookup,"sjc") //Mule::lookup("pgr_processSummerizedFlow",smy)
+
+//var batchInput = readUrl("classpath://examples/batch-file-input.json")
+//payload.Details.Detail
+var formattedRecords = payload.Details.Detail as Iterator flatMap((header,index) ->
+	using(headerRecord = header)
+	
+	header."DETAIL-RECORD" map((detail,detailIndex) -> 
+		
+		
+		
+		("HEADER-RECORD":headerRecord."HEADER-RECORD") 
+		++ detail ++ {
+			("IsSummaryRequired" : lookupsmy(detail."W-PT-SRCE-CD")[0]."Source_Code_Summarized") if lookupsmy(detail."W-PT-SRCE-CD")[0]."Source_Code_Summarized" != null
+		} 
+			
+		
+	)
+)
+
+
+---
+
+ (formattedRecords as Iterator divideBy(batchSize)) as Iterator  map ((batchRecord, index) -> 
+ { batchNo: (index + 1),
+ records: batchRecord }
+       )
