@@ -33,3 +33,14 @@ var formattedRecords = payload.Details.Detail as Iterator flatMap((header,index)
  { batchNo: (index + 1),
  records: batchRecord }
        )
+**************************************************************************************************
+
+%dw 2.0
+output application/java
+---
+
+if(vars.isSummaryRequired)
+Mule::p('secure::AWS-S3.summarized-file-dir') ++ (vars.fileName default "") ++ ".txt"
+else
+Mule::p('secure::AWS-S3.non-summarized-file-dir') ++ (vars.fileName default "") ++ '.json'
+
